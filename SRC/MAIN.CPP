@@ -320,7 +320,7 @@ int main(int argc, const char **argv) {
   glFastTexturing = FASTTEXTURING;
 
   class GLTFA_File *girl;
-  girl = loadGLTF_Character("c:/meshes/vd_grl1e.glb",GLTF_OBJECTID_MAINCHARACTER_NORMAL);
+  girl = loadGLTF_Character("c:/meshes/vd_grl1f.glb",GLTF_OBJECTID_MAINCHARACTER_NORMAL);
 
   glWatcomPrecisionTimer(GL_TRUE);
 #ifdef LOGFPS
