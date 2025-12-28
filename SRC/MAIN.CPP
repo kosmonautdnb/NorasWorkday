@@ -1,3 +1,28 @@
+/*
+  MIT License
+  
+  Copyright (c) 2025 Stefan Mader
+  
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+  
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+*/
+// WatcomGL can be found here: https://github.com/kosmonautdnb/WatcomGL
+// Some additional Libraries for WatcomC can be found here: https://github.com/kosmonautdnb/WatcomLibs
 #include <stdio.h>
 #include <math.h>
 #include "GL.H"
@@ -707,6 +732,8 @@ public:
   double jump;
   /// Just a little "physics" to let the "bongle" jump, this is the current jump velocity.
   double jumpAdd;
+  /// Is this one already ready?
+  bool bongleDone;
 
   Bongle(WayPoint *w = NULL) {
     color = -1;
@@ -714,6 +741,7 @@ public:
     wayPoint = 0;
     jump = 0;
     jumpAdd = 0;
+    bongleDone = false;
     if (w != NULL) {
       wayPoint = w->type;
       pos.x = w->x;
@@ -784,6 +812,7 @@ public:
       dir = n;
       if (dot(pos - bv,n) > 0) wayPoint++;
     }
+    if ((a != NULL) && (b == NULL)) bongleDone = true;
     animTime += dt;
     pos += dir * speed * dt;
     pos.y = scape->getHeight(pos.x, pos.z) + jump;
@@ -831,13 +860,17 @@ void drawBongles() {
 * A function to be called periodically updating the bongles positions.
 *
 * @param dt A time delta in seconds.
+* @returns If all bongles arrived in time.
 * @example updateBongles(0.1);
 */
-void updateBongles(const double dt) {
+bool updateBongles(const double dt) {
+  bool allDone = true;
   for (int i = 0; i < bongles.size(); i++) {
     Bongle *b = &bongles[i];
     b->walk(dt);
+    if (!b->bongleDone) allDone = false;
   }
+  return allDone;
 }
 
 /**
@@ -849,6 +882,8 @@ int main(int argc, const char **argv) {
   printf("Noras workday!\n");
   printf("----------------------------\n");
   printf("A little game to demonstrate the capabilities of WatcomGL.\n");
+  printf("Don't expect much from the gameplay.\n");
+  printf("It's just a tiny bit of fun for some freetime.\n");
   printf("WatcomGL is an almost complete oldschool OpenGL implementation\n");
   printf("for WatcomC++ 11.0, OpenWatcom, DJGPP.\n");
   printf("You can find WatcomGL at the following location:\n");
@@ -1178,6 +1213,17 @@ int main(int argc, const char **argv) {
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR2);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+  RGBAImage success = RGBAImage::fromFile("DATA/IMAGES/SUCCESS.PNG");
+  unsigned int successTex;
+  glGenTextures(1,&successTex);
+  glBindTexture(GL_TEXTURE_2D,successTex);
+  glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA, success.width, success.height, 0, GL_RGBA, GL_BYTE, success.data);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR2);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
 
   BitmapLayers *psd = new BitmapLayers();
   psd->loadPSD("DATA/MAPS/1/MAP.PSD");
@@ -1870,7 +1916,7 @@ int main(int argc, const char **argv) {
     double timePaintCharacterEnd = glSeconds();
 
 
-    updateBongles(td);
+    bool allDone = updateBongles(td);
     drawBongles();
 
     double timeHimmelStart = glSeconds();
@@ -1924,7 +1970,52 @@ int main(int argc, const char **argv) {
     double timeAllEnd = glSeconds();
 
     glRefresh();
+    if (allDone) break;
   }
+
+  while(glNextKey()!=0) {;}
+
+  while(1) {
+    glClearColor(clearColor.x,clearColor.y,clearColor.z,1);
+    glClearDepth(1.0);
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    glOrtho(0,320,200,0,-1,1);
+
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, successTex);
+    glBegin(GL_QUADS);
+    glColor4f(1,1,1,1);
+    glTexCoord2f(1,0); glVertex3f(320,0,0);
+    glTexCoord2f(0,0); glVertex3f(0,0,0);
+    glTexCoord2f(0,1); glVertex3f(0,200,0);
+    glTexCoord2f(1,1); glVertex3f(320,200,0);
+    glEnd();
+
+    const double lineHeight = 22;
+    const double fontScale = 0.8*glFrameBufferWidth/320;
+    glDrawTextTTF(0, 160, 110+lineHeight*0, 0, fontScale, "You did a great job!", 0xff000000, 0.5, 0.5);
+    glDrawTextTTF(0, 160, 110+lineHeight*1, 0, fontScale, "Earnings:", 0xff000000, 0.5, 0.5);
+    glDrawTextTTF(0, 160, 110+lineHeight*2, 0, fontScale, (String("$")+String::fromInt(money)).c_str(), 0xff000000, 0.5, 0.5);
+
+
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+    glPopMatrix();
+
+    glRefresh();
+    if (glNextKey() == ' ') break;
+  }
+
+  RGBAImage fr(glFrameBufferWidth,glFrameBufferHeight,glFrameBuffer);
+  RGBAImage fr2 = fr.getResized(320,200);
+  fr2.savePNG((String("WORKDAYS/")+String::fromInt(money)+".PNG").c_str());
 
   uninstallKeyboardHandler();
 

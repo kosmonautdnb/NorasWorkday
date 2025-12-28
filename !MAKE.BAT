@@ -10,7 +10,7 @@ rem @echo system dos4g > R:\LINK.LNK
 @echo -oR:\main.exe > R:\LINK2.LNK
 _BUILD\FLTMECHK.exe !MAK R:\main.exe
 if not ERRORLEVEL 255 call _BUILD\MAKEMK.BAT
-SET DJGPPCOMPILE=1
+SET DJGPPCOMPILE=0
 call wmake.exe /f R:\makefile /e /s /k
 if %DJGPPCOMPILE%==0 v R:\logs.log
 SET DJGPPCOMPILE=0
