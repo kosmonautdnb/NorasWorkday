@@ -15,7 +15,7 @@ You can end the game prematurely by pressing the **END** ​​or **ESC** key. O
 It has a fixed 16:9 aspect ratio (e.g., 1280x720). Therefore, it will appear distorted on 4:3 monitors (e.g., 640x480).
 
 You can find **WatcomGL** (an OpenGL for DJGPP/WatcomC/OpenWatcom) here: https://github.com/kosmonautdnb/WatcomGL  
-And some useful libraries for DJGPP/(mostly)WatcomC/OpenWatcom here: https://github.com/kosmonautdnb/WatcomLibs  
+And some useful libraries for DJGPP/(actually all are done for)WatcomC 11.0/OpenWatcom here: https://github.com/kosmonautdnb/WatcomLibs  
 
 There are two pre-compiled .exe files for FreeDOS:
 
