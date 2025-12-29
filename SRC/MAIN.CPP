@@ -1415,7 +1415,7 @@ int main(int argc, const char **argv) {
     }
 
     const int currentKey = glNextKey();
-    if (currentKey == GL_VK_END) break;
+    if (currentKey == GL_VK_END || currentKey == GL_VK_ESCAPE) break;
 
     if (currentKey != 0) logoFadeDest = 0;
     if (logoFadeDest < logoFade) {
@@ -2010,7 +2010,8 @@ int main(int argc, const char **argv) {
     glPopMatrix();
 
     glRefresh();
-    if (glNextKey() == ' ') break;
+    const int currentKey = glNextKey();
+    if (currentKey != 0) break;
   }
 
   RGBAImage fr(glFrameBufferWidth,glFrameBufferHeight,glFrameBuffer);

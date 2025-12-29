@@ -1,5 +1,5 @@
 rem call c:\opwat20\setvars.bat
-call c:\_wat_c_\setvars.bat
+rem call c:\_wat_c_\setvars.bat
 set INCLUDE=%INCLUDE%;SRC\STL;SRC\IMGUI;
 _build\text.exe
 @echo off
