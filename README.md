@@ -10,7 +10,7 @@ You play as the protagonist, Nora, and can use her "change" portals to alter her
 
 By changing the colors of the balls, you earn money. At the end of the workday, you can see how much money you have collected.
 
-You may use the key **END** to finish the game. And when you see the "certficate" you have to use the key **SPACE** to finally finish the game. This game is just a quick hack. Not much code involved in it.  
+You may use the key **END** or **ESCAPE** to "prematurely" finish the game. And when you see the "certficate" you may use the key **SPACE** to finally finish the game. This game is just a quick hack. Not much code involved in it.  
 
 There are two pre-compiled .exe files for FreeDOS:
 
