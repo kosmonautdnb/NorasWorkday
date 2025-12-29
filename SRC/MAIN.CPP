@@ -937,7 +937,7 @@ int main(int argc, const char **argv) {
   //Mesh *tre = loadOBJ("c:/MESHES/TREE/PINE2.OBJ");
   WAVOBJ_Mesh *tre[2];
   //tre[0] = loadOBJ("c:/MESHES/TREE2/TREE.OBJ");
-  tre[0] = loadTreeOBJ("c:/MESHES/EZTREE/PINELRG/PINELRG.OBJ");
+  tre[0] = loadTreeOBJ("DATA/MESHES/PINELRG.OBJ");
   WAVOBJ_Mesh *objs[16];
   objs[0] = loadOBJ("DATA/MESHES/SLAMP1_B.OBJ",false,1); // 'a' lamp
   objs[1] = loadOBJ("DATA/MESHES/FENCE_S1.OBJ",false,0.5); // 'b' fence
