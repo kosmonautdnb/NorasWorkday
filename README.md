@@ -10,7 +10,12 @@ You play as the protagonist, Nora, and can use her "change" portals to alter her
 
 By changing the colors of the balls, you earn money. At the end of the workday, you can see how much money you have collected.
 
-You may use the key **END** or **ESCAPE** to "prematurely" finish the game. And when you see the "certficate" you may use the key **SPACE** to finally finish the game. This game is just a quick hack. Not much code involved in it.  
+You can end the game prematurely by pressing the **END** ​​or **ESC** key. Once the certificate appears, you can permanently exit the game by pressing the **SPACEBAR** key. This game is just a small hack and contains very little code.
+
+It has a fixed 16:9 aspect ratio (e.g., 1280x720). Therefore, it will appear distorted on 4:3 monitors (e.g., 640x480).
+
+You can find **WatcomGL** (an OpenGL for DJGPP/WatcomC/OpenWatcom) here: https://github.com/kosmonautdnb/WatcomGL  
+And some useful libraries for DJGPP/(actually all are done for)WatcomC 11.0/OpenWatcom here: https://github.com/kosmonautdnb/WatcomLibs  
 
 There are two pre-compiled .exe files for FreeDOS:
 
@@ -22,7 +27,7 @@ I recommend using WatcomC++ 11.0 for development, as it compiles quickly, and DJ
 
 **Compilation:**
 
-You will need a **RAM disk on R:**. Installation instructions can be found in AUTOEXEC.BAT in the _BUILD/ folder. The RAMDISK file (.exe) is also located in the _BUILD/ folder.
+You will need a **RAM disk on R:**. Installation instructions can be found in AUTOEXEC.BAT in the _BUILD/ folder. The RAMDISK file (.exe) is also located in the _BUILD/ folder. I choose a Ramdisk because USB Sticks wear out if used for a longer time (write cycles).
 
 **Run !CLEAN.BAT** to clean the R:/ directory.
 
