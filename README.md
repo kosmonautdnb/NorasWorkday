@@ -2,7 +2,7 @@
 
 **A presentation of the game on YouTube**: https://www.youtube.com/watch?v=sGpmDqRiE00
 
-Nora's Workday is a small example game that demonstrates the possibilities of WatcomGL. WatcomGL is an OpenGL framework for FreeDOS and uses **WatcomC / OpenWatcom / DJGPP**. It needs around **200mb** of accessible memory (by a Dos extender).
+Nora's Workday is a small example game that demonstrates the possibilities of WatcomGL. WatcomGL is an OpenGL framework for FreeDOS and uses **WatcomC / OpenWatcom / DJGPP**. It needs around **200mb** of accessable memory (by a Dos extender).
 
 In this quickly programmed game, you have to change the color of bouncing balls moving through Nora's world.
 
