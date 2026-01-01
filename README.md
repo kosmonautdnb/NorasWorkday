@@ -12,7 +12,10 @@ By changing the colors of the balls, you earn money. At the end of the workday, 
 
 You can end the game prematurely by pressing the **END** ​​or **ESC** key. Once the certificate appears, you can permanently exit the game by pressing the **SPACEBAR** key. This game is just a small hack and contains very little code.
 
-It has a fixed 16:9 aspect ratio (e.g., 1280x720). Therefore, it will appear distorted on 4:3 monitors (e.g., 640x480).
+It has a fixed **16:9** aspect ratio (e.g., 1280x720). Therefore, it will appear distorted on 4:3 monitors (e.g., 640x480).
+
+**DosBOX and DosBOX-X**:  
+It's not yet memory-optimized and uses very large data files. Therefore, it doesn't run in DOSBOX which just supports 64MB of memory (says the internet). DOSBOX-X with memsize=256 runs the **NORA1_DJ.EXE** but much much too slow, the OpenWatcom version **NORA1_OW.EXE** fails due to just 64mb. On a real FreeDOS machine, you can access approximately **256 MB** instead of just 64MB of memory using WatcomC (PMode/W). DOSBOX and DOSBOX-X are far too slow for this; it's better to use VirtualBox or a real computer with FreeDOS. Also DosBOX doesn't show a **16:9** display.
 
 You can find **WatcomGL** (an OpenGL for DJGPP/WatcomC/OpenWatcom) here: https://github.com/kosmonautdnb/WatcomGL  
 And some useful libraries for DJGPP/(actually all are done for)WatcomC 11.0/OpenWatcom here: https://github.com/kosmonautdnb/WatcomLibs  
@@ -39,9 +42,6 @@ You will need a **RAM disk on R:**. Installation instructions can be found in AU
 The game will access the **DATA/** folder, which contains all the game data.
 
 You could **Run !BATCH.BAT** to build all the files (some settings are in there) of the game if you are in a non FreeDOS environment.  
-
-**DosBOX and DosBOX-X**:  
-It's not yet memory-optimized and uses very large data files. Therefore, it doesn't run in DOSBOX which just supports 64MB of memory (says the internet). DOSBOX-X with memsize=256 runs the **NORA1_DJ.EXE** but much much too slow, the OpenWatcom version **NORA1_OW.EXE** fails due to just 64mb. On a real FreeDOS machine, you can access approximately **256 MB** instead of just 64MB of memory using WatcomC (PMode/W). DOSBOX and DOSBOX-X are far too slow for this; it's better to use VirtualBox or a real computer with FreeDOS.  
 
 **WatcomC with 256 MB of memory on FreeDOS (with PMODE/W) instead of the 32 MB (with Dos4gw)**  
 PMODE/W config.sys:  
