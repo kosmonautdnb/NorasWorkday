@@ -15,7 +15,7 @@ You can end the game prematurely by pressing the **END** ​​or **ESC** key. O
 It has a fixed **16:9** aspect ratio (e.g., 1280x720). Therefore, it will appear distorted on 4:3 monitors (e.g., 640x480).
 
 **DosBOX and DosBOX-X**:  
-It's not yet memory-optimized and uses very large data files. Therefore, it doesn't run in DOSBOX which just supports 64MB of memory (says the internet). DOSBOX-X with memsize=256 runs the **NORA1_DJ.EXE** but much much too slow, the OpenWatcom version **NORA1_OW.EXE** fails due to just 64mb. On a real FreeDOS machine, you can access approximately **256 MB** instead of just 64MB of memory using WatcomC (PMode/W). DOSBOX and DOSBOX-X are far too slow for this; it's better to use VirtualBox or a real computer with FreeDOS. Also DosBOX doesn't show a **16:9** display.
+It is not yet memory-optimized and uses very large data files. Therefore, it doesn't run in DOSBox, which, according to the internet, only supports 64 MB of RAM. DOSBox-X with **`memsize=256`** does execute **NORA1_DJ.EXE**, but it is far too slow. The OpenWatcom version, **NORA1_OW.EXE**, **fails** due to the limited 64 MB. On a real FreeDOS machine, WatcomC (PMode/W) can access approximately **256 MB** of RAM instead of just 64 MB. DOSBox and DOSBox-X are far too slow for this; it is recommended to use VirtualBox or a real FreeDOS machine. Furthermore, DOSBox does not provide a virtual **16:9** display by default.
 
 You can find **WatcomGL** (an OpenGL for DJGPP/WatcomC/OpenWatcom) here: https://github.com/kosmonautdnb/WatcomGL  
 And some useful libraries for DJGPP/(actually all are done for)WatcomC 11.0/OpenWatcom here: https://github.com/kosmonautdnb/WatcomLibs  
