@@ -1,18 +1,18 @@
 /*
   MIT License
-
+  
   Copyright (c) 2025 Stefan Mader
-
+  
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
   in the Software without restriction, including without limitation the rights
   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
   copies of the Software, and to permit persons to whom the Software is
   furnished to do so, subject to the following conditions:
-
+  
   The above copyright notice and this permission notice shall be included in all
   copies or substantial portions of the Software.
-
+  
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -94,7 +94,7 @@ public:
 
   /**
   * Constructor of an "invalid" waypoint object.
-  */
+  */  
   WayPoint() {
     x = y = z = 0;
     type = -1;
@@ -318,7 +318,7 @@ void paintGirlRecolorPortal(const Vector &color) {
 * Lighting the "colors" image with the direction of the normals in the "normals" image.
 *
 * @param colors The rgba base color image.
-* @param normals The rgba normal map image. Red (0..255) is normal map x(-1..1). Green (0..255) is normal map z(-1..1). Blue (0..255) is normal map y(-1..1).
+* @param normals The rgba normal map image. Red (0..255) is normal map x(-1..1). Green (0..255) is normal map z(-1..1). Blue (0..255) is normal map y(-1..1). 
 * @param nx The X component of the normal to light the image. The normal gets normalized before.
 * @param ny The Y component of the normal to light the image. The normal gets normalized before.
 * @param nz The Z component of the normal to light the image. The normal gets normalized before.
@@ -405,7 +405,7 @@ void blitGrassBlade(unsigned int texture, float w, float h, const class Vector *
   glPopMatrix();
 }
 
-/**
+/** 
 * A function that blits a flower tip into the scenery.
 * You have to set color and texture before. The flowers use ALPHA_TEST.
 *
@@ -430,7 +430,7 @@ void blitFlower(Vector *pos, float siz) {
   glDisable(GL_ALPHA_TEST);
 }
 
-/**
+/** 
 * Blits a big sprite. Used for the sun.
 * You have to set color and texture before. It uses ALPHA_TEST and blending.
 *
@@ -895,17 +895,10 @@ void checkMemory(int megaBytes) {
   regs.x.edi = FP_OFF( &MemInfo );
   int386x( 0x31, &regs, &regs, &sregs );
   int availableMegaBytes = MemInfo.LargestBlockAvail/1024/1024;
-  printf("This game uses PMODE/W for max 256mb of accessible ram.\n");
-  printf("WatcomC's original Dos4GW only offers 32mb.\n");
-  printf("\n");
-  printf("Accessible ram free: %dmb\n", availableMegaBytes);
-  printf("\n");
+  printf("Additional memory free: %dmb\n", availableMegaBytes);
   if (availableMegaBytes < megaBytes) {
     printf("You need atleast: %dmb to run this game.\n", megaBytes);
     printf("In FreeDOS you can achieve this by updating your config.sys.\n");
-    printf("DEVICE=C:\\_DOS_\\BIN\\HIMEMX.exe\n");
-    printf("DEVICE=C:\\_DOS_\\BIN\\JEMM386.exe /SB /MAX=512000\n");
-    exit(0);
   }
 }
 #else
@@ -920,7 +913,7 @@ void checkMemory(int megaBytes) {
 */
 int main(int argc, const char **argv) {
 /*
-  This is just a fast coded example game for WatcomGL. I didn't dare to cleanup this main() function. Maybe that's something todo: later..
+  This is just a fast coded example game for WatcomGL. I didn't dare to cleanup this main() function. Maybe that's something todo: later..  
 */
   printf("----------------------------\n");
   printf("Noras workday!\n");
@@ -1164,7 +1157,7 @@ int main(int argc, const char **argv) {
           if (o>255) o = 255;
           c = o * 0x010101;
           c |= 0xff000000;
-        }
+        }    
         fl[x+y*FLWIDTH] = c;
       }
     }
@@ -1197,7 +1190,7 @@ int main(int argc, const char **argv) {
           int o = pow(d,0.75) * 127+128;
           c = o * 0x010101;
           c |= 0xff000000;
-        }
+        }    
         sun[x+y*SUNWIDTH] = c;
       }
     }
