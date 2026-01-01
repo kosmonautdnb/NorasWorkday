@@ -4,6 +4,8 @@
 
 Nora's Workday is a small example game that demonstrates the possibilities of WatcomGL. WatcomGL is an OpenGL framework for FreeDOS and uses **WatcomC / OpenWatcom / DJGPP**.
 
+It's not yet memory-optimized and uses very large data files. Therefore, it doesn't run in DOSBOX-X or DOSBOX. I couldn't get more than 64 MB of memory to work with them, which isn't enough. On a real FreeDOS machine, you can access approximately **256 MB** of memory using WatcomC (PMode/W) and DJGPP. I **will** implement a memory test at startup so the game stops if there isn't enough memory available. Perhaps the game will be optimized later to run with 64 MB. However, DOSBOX and DOSBOX-X are far too slow for this; it's better to use VirtualBox or a real computer.
+
 In this quickly programmed game, you have to change the color of bouncing balls moving through Nora's world.
 
 You play as the protagonist, Nora, and can use her "change" portals to alter her clothing and recolor the bouncing and moving balls.
