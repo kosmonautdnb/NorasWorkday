@@ -3,6 +3,7 @@
 // See ImGui::ShowTestWindow() for sample code.
 // Read 'Programmer guide' in .cpp for notes on how to setup ImGui in your codebase.
 // Get latest version at https://github.com/ocornut/imgui
+// Texts longer than 3072 letters (1024*3) may impose crash risks with this current version.
 #ifndef __IMGUI_H__
 #define __IMGUI_H__
 #pragma once
@@ -295,7 +296,7 @@ namespace ImGui
     IMGUI_API bool          TreeNodeV(const char* str_id, const char* fmt, va_list args);       // "
     IMGUI_API bool          TreeNodeV(const void* ptr_id, const char* fmt, va_list args);       // "
     IMGUI_API void          TreePush(const char* str_id = NULL);                                // already called by TreeNode(), but you can call Push/Pop yourself for layouting purpose
-    IMGUI_API void          TreePush(const void* ptr_id = NULL);                                // "
+    IMGUI_API void          TreePush(const void* ptr_id); // = NULL :mad:                                // "
     IMGUI_API void          TreePop();
     IMGUI_API void          SetNextTreeNodeOpened(bool opened, ImGuiSetCond cond = 0);          // set next tree node to be opened.
 

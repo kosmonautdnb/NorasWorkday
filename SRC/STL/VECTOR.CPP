@@ -37,10 +37,10 @@ Vector &Vector::set(const Vector &b) {
 
 double Vector::get(int index) const {
   switch(index) {
-  case 0: return x; break;
-  case 1: return y; break;
-  case 2: return z; break;
-  case 3: return w; break;
+  case 0: return x;
+  case 1: return y;
+  case 2: return z;
+  case 3: return w;
   }
   return -1;
 }
@@ -282,11 +282,8 @@ Vector &Vector::normalize() {
   return *this;
 }
 
-Vector &Vector::operator-() {
-  x = -x;
-  y = -y;
-  z = -z;
-  return *this;
+Vector Vector::operator-() {
+  return Vector(-x,-y,-z);
 }
 
 Vector &Vector::operator+=(const Vector &b) {

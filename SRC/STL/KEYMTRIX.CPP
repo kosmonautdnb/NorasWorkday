@@ -13,13 +13,13 @@
 #include <go32.h>
 #endif // __DJGPP__
 
-volatile bool keyPressed[0x80] = {0};
+volatile bool keyPressed[KEYMATRIX_KEYCOUNT] = {0};
 
 bool isKeyPressed(int scanCode) {
   return keyPressed[scanCode & 0x7f];
 }
 
-#define NONSTANDARDKEY(__h__) {key = (__h__)|(key&0X80); keyPressed[key & 0x7f] = key & 0x80 ? false : true;} break;
+#define NONSTANDARDKEY(__h__) {key = (unsigned char)((__h__)|(key&0X80)); keyPressed[key & 0x7f] = key & 0x80 ? false : true;} break;
 static int key0xe0 = 0;
 static int key0xe0val = 0;
 static bool keyWasPause = false;

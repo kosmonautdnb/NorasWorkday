@@ -18,10 +18,10 @@ RGBAImage RGBAImage::fromFile(const char *fileName) {
   return r;
 }
 
-RGBAImage RGBAImage::fromMemory(const uint8_t *fileData, uint32_t fileLength) {
+RGBAImage RGBAImage::fromMemory(const void *fileData, uint32_t fileLength) {
   RGBAImage r;
   int width, height, channels;
-  r.data = (unsigned int*)stbi_load_from_memory(fileData, fileLength, &width, &height, &channels, 4);
+  r.data = (unsigned int*)stbi_load_from_memory((const unsigned char *)fileData, fileLength, &width, &height, &channels, 4);
   r.width = r.data == NULL ? -1 : width;
   r.height = r.data == NULL ? -1 : height;
   return r;
@@ -52,13 +52,13 @@ RGBAImage RGBAImage::getResized(int width, int height) {
 }
 
 void RGBAImage::flipY() {
-  unsigned int *flipped = new unsigned int[width*height];
+  unsigned int *flipped = (unsigned int*)malloc(width*height*sizeof(unsigned int));
   for (int y = 0; y < height; y++) {
     for (int x = 0; x < width; x++) {
       flipped[x+(height-1-y)*width] = data[x+y*width];
     }
   }
-  delete[] data;
+  ::free(data);
   data = flipped;
 }
 
