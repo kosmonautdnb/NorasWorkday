@@ -53,6 +53,8 @@ You could **Run !BATCH.BAT** to build all the files (some settings are in there)
 
 **WatcomC with 256 MB of memory on FreeDOS (with PMODE/W) instead of the 32 MB (with Dos4gw)**
 
+**WatcomC also features 256MB with DOS4GW when used with SBEMUs HDPMI32i DPMI host.**
+
 DEVICE=C:\_DOS_\BIN\HIMEMX.exe  
 DEVICE=C:\_DOS_\BIN\JEMM386.exe /SB /MAX=262144  
 
