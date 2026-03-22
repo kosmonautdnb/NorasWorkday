@@ -44,6 +44,11 @@ copy /Y c:\_STL_\GLEGA.CPP SRC\STL\
 copy /Y c:\_STL_\ENC_H264.HPP SRC\STL\
 copy /Y c:\_STL_\MINIMP4.HPP SRC\STL\
 
+copy /Y c:\_STL_\SNDBLSTR.HPP SRC\STL\
+copy /Y c:\_STL_\SNDBLSTR.CPP SRC\STL\
+copy /Y c:\_STL_\SA2.HPP SRC\STL\
+copy /Y c:\_STL_\SA2.CPP SRC\STL\
+
 copy /Y c:\_STL_\STBIMAGE.HPP SRC\STL\
 copy /Y c:\_STL_\STBIMGWR.HPP SRC\STL\
 copy /Y c:\_STL_\STBIMGRS.HPP SRC\STL\

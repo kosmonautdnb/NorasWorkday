@@ -41,6 +41,7 @@
 #include "TERRAIN/T_EDIT.HPP"
 #include "OBJECTS/O_GLTF.HPP"
 #include "OBJECTS/O_WAVOBJ.HPP"
+#include "SOUND/SOUND.HPP"
 #include "GLRECORD.HPP"
 #include "GLEGA.HPP"
 #ifdef __WATCOMC__
@@ -58,6 +59,7 @@
 double glSeconds2 = 0;
 
 //#define USE_EGA
+#define USE_SOUND
 
 /**
 * A fmod which handles negative values a bit "better"
@@ -1492,6 +1494,10 @@ int main(int argc, const char **argv) {
 
   cameraPos.y = scape->getHeight(cameraPos.x,cameraPos.z);
 
+#ifdef USE_SOUND  
+  playSong("DATA/SOUND/TEST.SA2");
+#endif
+
   printf("Initializing ScreenMode...\n");
   glWatcomPrecisionTimer(GL_TRUE);
 #ifdef USE_EGA
@@ -2130,6 +2136,10 @@ int main(int argc, const char **argv) {
     const int currentKey = glNextKey();
     if (currentKey != 0) break;
   }
+
+#ifdef USE_SOUND  
+  stopSong();
+#endif
 
   RGBAImage fr(glFrameBufferWidth,glFrameBufferHeight,glFrameBuffer);
   RGBAImage fr2 = fr.getResized(320,200);
